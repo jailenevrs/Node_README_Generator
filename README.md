@@ -1,3 +1,5 @@
-# Professional README Generator Starter Code
+## Node README generator
 
-[How to create a Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+# Description
+
+A README generator made with node.js. The application uses user input from inquirer to create a README.md file.

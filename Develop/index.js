@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer=require("inquirer");
 const fs= require("fs");
+const generate = require("generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -45,6 +46,10 @@ const questions = [
         name:"Tests",
         message:"Give explicit instruction on how to run test",
         type:"text"
+    },
+    {
+        name:"questions",
+        message:"What is your github profile and your email address? "
     }
 ]
 
