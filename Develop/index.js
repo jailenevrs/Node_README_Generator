@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer=require("inquirer");
 const fs= require("fs");
-const generate = require("generateMarkdown");
+
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -40,7 +40,7 @@ const questions = [
         name:"license",
         message:"Which license was used?",
         type:"list",
-        choices:['Apache License 2.0','MIT license','Boost Software License 1.0','GNU v3.0']
+        choices:['Apache License 2.0','BSD 3-Clause License','ISC License','None']
     },
     {
         name:"Tests",
@@ -49,16 +49,23 @@ const questions = [
     },
     {
         name:"questions",
-        message:"What is your github profile and your email address? "
+        message:"What is your github username and your email address? "
     }
 ]
 
 const readmeTemplate = (response) => {
-return `## ${response.Title}
+return `# ${response.Title}
+
 ## Description 
 ${response.Description} 
 ## Table of Contents
-${response.Installation}
+[Description] (#Description)
+[Installation] (#Installation)
+[Usage] (#Usage)
+[License] (#License)
+[Contributing] (#Contributing)
+[Tests] (#Tests)
+[License] (#License)
 ## Installation
 ${response.Installation}
 ## Usage
