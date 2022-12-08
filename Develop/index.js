@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer=require("inquirer");
 const fs= require("fs");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 
 // TODO: Create an array of questions for user input
@@ -40,7 +41,7 @@ const questions = [
         name:"license",
         message:"Which license was used?",
         type:"list",
-        choices:['Apache License 2.0','BSD 3-Clause License','ISC License','None']
+        choices:['Apache','BSD3','MIT','None']
     },
     {
         name:"Tests",
@@ -52,10 +53,17 @@ const questions = [
         message:"What is your github username and your email address? "
     }
 ]
+function renderLicenseBadge(license) {
+    if (license && typeof license === "string" && license !== "None"){
+      return `![License](https://img.shields.io/badge/License-${license}-lightblue.svg)`
+    }{
+      return "";
+    }
+}
 
 const readmeTemplate = (response) => {
 return `# ${response.Title}
-
+${renderLicenseBadge(response.license)}
 ## Description 
 ${response.Description} 
 ## Table of Contents
@@ -73,7 +81,7 @@ ${response.Usage}
 ## Contributing
 ${response.contributing}
 ## License
-${response.license}`
+[${response.license}](https://opensource.org/licenses/${response.license})`
 }
 
 // TODO: Create a function to initialize app
